@@ -1,0 +1,484 @@
+/* Aplica un desenfoque al cuerpo y lo elimina después de 0.5 segundos */
+body.blurred {
+    filter: blur(2px);
+    transition: filter 0.5s ease;
+}
+
+/* Estilos generales del cuerpo */
+body {
+    background-image: url("assets/output-onlinegiftools.gif");
+    background-size: 300px;
+    margin: 0; /* Elimina el margen predeterminado */
+    overflow-y: scroll; /* Permite desplazarse hacia abajo */
+    animation: moveBackground 20s linear infinite; /* Animación de fondo en movimiento */
+    overflow-x: hidden; /* Evita que haya barras de desplazamiento horizontal */
+    font-family: 'Roboto', sans-serif; /* Aplica la fuente Roboto a todo el documento */
+}
+
+/* Estilos para el canvas */
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Coloca el canvas detrás de todo el contenido */
+    filter: blur(2px);
+    transition: filter 0.5s ease;
+}
+
+/* Estilos para el header */
+.header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 2em;
+    position: relative;
+    z-index: 1;
+    font-family: 'Roboto', sans-serif;
+    transform: translateY(-100%); /* Inicialmente fuera de la pantalla */
+    animation: slideIn 1s forwards; /* Animación de entrada */
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+/* Estilos para el título del header */
+.header h1 {
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Estilos para la descripción del header */
+.header p {
+    font-weight: 300;
+    font-size: 0.8em; /* Tamaño de fuente más pequeño para la descripción */
+    margin-top: 10px;
+}
+
+/* Clase para elementos ocultos creo que esto no me funciono xd */
+.hidden {
+    opacity: 0;
+}
+
+/* Clase para elementos visibles */
+.visible {
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+
+/* Animación de desvanecimiento */
+.container, .coso2, .coso, .espacio-educa {
+    animation: fadeIn 1s forwards;
+}
+
+/* Definición de animaciones */
+@keyframes bounceIn {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes slideIn {
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes moveBackground {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+/* Estilos para el contenedor principal */
+.container {
+    position: relative;
+    width: 450px;
+    margin: 20px auto; /* Centra el contenedor horizontalmente */
+}
+
+/* Estilos para el elemento coso */
+.coso {
+    border-radius: 20px;
+    background-color: #f9f9f9;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    height: auto;
+    width: 400px;
+    opacity: 0;
+    transition: opacity 0.5s ease, max-height 0.5s ease, padding 0.5s ease;
+    overflow: hidden;
+    max-height: 0;
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    align-items: center;
+}
+.coso p {
+    font-size: 1em;
+    line-height: 1.5;
+    color: #666;
+}
+.coso2 li {
+    font-size: 1em;
+    line-height: 1.5;
+    color: #3f3f3f;
+    font-weight: 800;
+}
+
+/* Estilos para el elemento coso2 */
+.coso2 {
+    position: relative;
+    border-radius: 20px;
+    background-color: #f9f9f9;
+    padding: 7px;
+    display: flex;
+    flex-direction: row;
+    margin: 25px;
+    margin-top: 30px;
+    width: auto;
+    height: 38px;
+    align-items: center;
+}
+
+/* Estilos para el icono */
+.icono {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    border: 5px solid #ffffff;
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    transition: transform 0.3s ease;
+    z-index: 2;
+}
+
+/* Efecto de hover en el icono */
+.icono:hover {
+    transform: scale(1.2);
+}
+
+/* Estilos para el contenedor del icono */
+.coso3 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+}
+
+/* Estilos para el menú */
+.menu {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+    margin-left: 90px;
+}
+
+/* Estilos para los elementos del menú */
+.menu li {
+    background-color: transparent;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+/* Efecto de hover en los elementos del menú */
+.menu li:hover {
+    background-color: #cccccc;
+    transform: scale(1.1);
+}
+.lenguajes {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.lenguajes li a {
+    text-decoration: none;
+    color: black;
+    font-family:"Pixelify Sans", sans-serif;
+    font-weight: 800;
+}
+.lenguajes li {
+    background-color: #F9094B;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    flex-shrink: 0;
+}
+.lenguajes li:hover {
+    background-color: #c50035;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+/* Estilos para el contenedor de Espacio Educa */
+.espacio-educa {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    margin: 20px;
+    
+}
+
+/* Estilos para el título de Espacio Educa */
+.espacio-educa h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.espacio-educa:hover {
+    transform: scale(1.02); /* Escala la sección un poco */
+    transition: transform 0.3s ease; /* Transiciones para efectos de hover */
+}
+
+/* Estilos para el párrafo de Espacio Educa */
+.espacio-educa p {
+    font-size: 1em;
+    line-height: 1.5;
+    color: #666;
+}
+
+/* Estilos para la barra de navegación */
+
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #333;
+    padding: 10px 0;
+    z-index: 11;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.navbar li {
+    display: inline;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    display: block;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    background-color: #111;
+    border-radius: 5px;
+}
+
+
+
+
+.coso2 .menu {
+    margin-left: 55px; /* Ajusta el valor según lo que necesites */
+}
+/* Estilo para el título con animación */
+.rollercoaster-title {
+    display: inline-block;
+    font-family: 'Arial', sans-serif;
+    color: #08D81A;
+}
+
+.rollercoaster-title span {
+    display: inline-block;
+    animation: rollercoaster 1s infinite ease-in-out, rainbow 2s infinite linear;
+    animation-delay: calc(0.1s * var(--i));
+}
+
+@keyframes rollercoaster {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes rainbow {
+    0% { color: #FF0000; } /* Rojo */
+    14.28% { color: #FF7F00; } /* Naranja */
+    28.56% { color: #FFFF00; } /* Amarillo */
+    42.84% { color: #00FF00; } /* Verde */
+    57.12% { color: #0000FF; } /* Azul */
+    71.40% { color: #4B0082; } /* Morado */
+    85.68% { color: #8B00FF; } /* Violeta */
+    100% { color: #FF0000; } /* Roj0 */
+}
+@keyframes rollercoaster2 {
+    0%, 50%, 100% {
+        transform: translateY(0);
+    }
+    25%,75% {
+        transform: translateY(-5px);
+    }
+}
+.texto_m {
+    display: inline-block;
+    font-weight: 1000;
+    font-family: "Pixelify Sans", sans-serif;
+    color: #F9094B;
+}
+.texto_m span {
+    display: inline-block;
+    animation: rollercoaster2 1s infinite ease-in-out;
+    animation-delay: calc(0.1s * var(--i));
+}
+
+
+
+
+.kirbi2 {
+    width: 100px;
+}
+/* Estilos para la sección de proyectos */
+.proyectos {
+    background-color: #f0f0f0; /* Color de fondo */
+    padding: 20px; /* Relleno alrededor del contenido */
+    margin: 20px auto; /* Espacio alrededor y centrado horizontal */
+    border-radius: 10px; /* Bordes redondeados */
+    width: 80%; /* Ancho de la sección */
+    max-width: 800px; /* Ancho máximo */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones para efectos de hover */
+}
+
+.proyectos h2 {
+    font-size: 2em; /* Tamaño de fuente */
+    margin-bottom: 10px; /* Espacio debajo del encabezado */
+    color: #333; /* Color del texto */
+    text-align: center; /* Alineación del texto */
+}
+
+.proyectos p {
+    font-size: 1.2em; /* Tamaño de fuente */
+    color: #666; /* Color del texto */
+    line-height: 1.5; /* Altura de línea */
+    text-align: center; /* Alineación del texto */
+    margin: 0 auto; /* Centrado horizontal */
+    max-width: 600px; /* Ancho máximo del párrafo */
+}
+
+/* Efecto de hover para la sección de proyectos */
+.proyectos:hover {
+    transform: scale(1.05); /* Escala la sección un poco */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+}
+.kirbi {
+    width: 150px;
+}
+.icon img {
+    width: 60px;
+}
+#final {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 20px;
+    position: relative;
+    z-index: 1;
+    font-family: 'Roboto', sans-serif;
+}
+#final p {
+    font-size: 20px;
+    color: #b5b5b5;
+    font-family: "Pixelify Sans", sans-serif;
+}
+#final img {
+    width: 444px;
+    border-radius: 20px;
+    border-color: #000000;
+    border-style:inset;
+    border-width: 10px;
+}
+#final img:hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform: scale(1.04); 
+    transition: transform 0.3s ease;
+}
+.lp {
+    font-size: 15px;
+    color: #666;
+    font-family: "Pixelify Sans", sans-serif;
+}
+.video-container {
+    text-align: center;
+    margin-top: 20px;
+}
+.video-container video {
+    width: 80%;
+    max-width: 600px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+}
+#footer {
+    background-color: rgb(36, 36, 36);
+    color: white;
+    padding: 20px;
+}
+.imgp {
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+}
+#footer a {
+    color: #c50035;
+}
+#Contacto {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(36, 36, 36);
+    color: white;
+    padding: 20px;
+    height: auto;
+}
+.DD {
+    display: flex;
+    width: max-content;
+
+}
+.kirbi3 {
+    
+    width: 100px;
+}

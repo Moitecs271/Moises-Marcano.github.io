@@ -1,0 +1,66 @@
+.inputs {
+    display:flex;
+    justify-content:space-around;
+}
+
+.buttons {
+    display:flex;
+    justify-content:space-around;
+}
+
+.resultados{
+    display:flex;
+    justify-content:center;
+}
+
+input {
+    width: 40%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+button {
+    display:flex;
+    justify-content:space-around;
+}
+
+
+.boton {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.sumar-boton {
+    background-color: #F8623F;
+}
+
+.restar-boton {
+    background-color: #3843D0;
+}
+
+.multiplicar-boton {
+    background-color: #E50F6C;
+}
+
+.dividir-boton {
+    background-color: #AC0FE5;
+}
+
+.boton:hover {
+    border-radius: 15px;
+}
+
+
+.title {        
+    font-family: 'Disket-Mono', monospace;
+    font-weight: bold;
+}
